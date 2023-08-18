@@ -3,6 +3,10 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../constants/color_constants.dart';
+import '../widgets/articles.dart';
+import '../widgets/author_news.dart';
+import '../widgets/news_catalog.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -26,19 +30,24 @@ class MyHomePage extends StatelessWidget {
         drawer: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
           child: Drawer(
-            width: MediaQuery.of(context).size.width * 0.7,
+            width: MediaQuery.of(context).size.width * 0.67,
             child: const DrawerChild(),
           ),
         ),
-        body: const Column(
-          children: [
-            Center(
-              child: Text(
-                'Hello, world!',
-                style: TextStyle(fontSize: 24),
-              ),
-            ),
-          ],
+        backgroundColor: bg,
+        body: const SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 16),
+              NewsCatalog(),
+              SizedBox(height: 16),
+              AuthorNews(),
+              SizedBox(height: 16),
+              Articles(),
+              SizedBox(height: 16),
+              NewsCatalog(),
+            ],
+          ),
         ),
       ),
     );
