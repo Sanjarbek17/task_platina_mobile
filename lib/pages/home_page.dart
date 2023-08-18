@@ -2,11 +2,12 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:task_platina_mobile/widgets/main_widgets/category_new.dart';
 
 import '../constants/color_constants.dart';
-import '../widgets/articles.dart';
-import '../widgets/author_news.dart';
-import '../widgets/news_catalog.dart';
+import '../widgets/main_widgets/articles.dart';
+import '../widgets/main_widgets/author_news.dart';
+import '../widgets/main_widgets/news_catalog.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -45,7 +46,7 @@ class MyHomePage extends StatelessWidget {
               SizedBox(height: 16),
               Articles(),
               SizedBox(height: 16),
-              NewsCatalog(),
+              CategoryNews(),
             ],
           ),
         ),

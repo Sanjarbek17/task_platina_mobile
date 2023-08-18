@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'big_card/big_card.dart';
-import 'small_card.dart';
-import 'template_category.dart';
+import '../big_card/big_card2.dart';
+import '../small_card.dart';
+import '../template_category.dart';
 
-class NewsCatalog extends StatelessWidget {
-  const NewsCatalog({
+class CategoryNews extends StatelessWidget {
+  const CategoryNews({
     super.key,
   });
 
@@ -13,10 +13,10 @@ class NewsCatalog extends StatelessWidget {
   Widget build(BuildContext context) {
     return TemplateCategory(
       // TODO: localize this text
-      text: 'Муҳим янгиликлар',
+      text: 'Давлат харидлари',
       child: Column(
         children: [
-          const BigCard(),
+          const BigCard2(),
           const Divider(height: 35),
           ListView.separated(
             itemBuilder: (context, index) => const SmallCard(),
