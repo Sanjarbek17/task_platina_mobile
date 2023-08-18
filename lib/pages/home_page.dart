@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../widgets/open_drawer.dart';
+import 'open_drawer.dart';
 
 class MyHomePage extends StatelessWidget {
   MyHomePage({super.key});
