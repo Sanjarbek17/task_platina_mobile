@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -26,7 +28,7 @@ class TemplateCategory extends StatelessWidget {
               children: [
                 SvgPicture.asset('assets/images/bullet_icon.svg', color: blue),
                 const SizedBox(width: 8),
-                Text(text, style: TextStyle(color: Color(0xFF1D3068), fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
+                Text(text, style: const TextStyle(color: Color(0xFF1D3068), fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
                 const Spacer(),
                 SvgPicture.asset('assets/images/arrow_left.svg', color: blue),
               ],
