@@ -1,14 +1,15 @@
-// ignore_for_file: constant_identifier_names
+// ignore_for_file: constant_identifier_names, non_constant_identifier_names
 
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' as get_x;
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
+import 'package:task_platina_mobile/controllers/language_controller.dart';
 
 enum Method { POST, GET, PUT, DELETE, PATCH }
 
-// TODO: change this url language
-const BASE_URL = "https://cp.dev.platina.uz/";
+String BASE_URL = "https://cp.dev.platina.uz/";
 
 class RestClient extends GetxService {
   late Dio _dio;
@@ -41,7 +42,8 @@ class RestClient extends GetxService {
 
   Future<dynamic> request(String url, Method method, Map<String, dynamic>? params) async {
     Response response;
-    url = 'uz/api/$url';
+    LocalizationController loc = get_x.Get.find();
+    url = '${loc.locale.languageCode}/api/$url';
     try {
       if (method == Method.POST) {
         response = await _dio.post(url, data: params);

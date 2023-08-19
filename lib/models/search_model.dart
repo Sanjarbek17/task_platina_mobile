@@ -3,14 +3,22 @@ import 'package:task_platina_mobile/models/post_model.dart';
 import 'category_model.dart';
 
 class SearchModel implements PostModel {
+  @override
   final CategoryModel category;
+  @override
   final String title;
+  @override
   final String shortDescription;
+  @override
   final String description;
+  @override
   final String slug;
+  @override
   final DateTime? publish;
+  @override
   final int? numberOfViews;
   final String getImageMediumUrl;
+  @override
   final String language;
 
   SearchModel({

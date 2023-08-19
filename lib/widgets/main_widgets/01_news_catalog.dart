@@ -20,8 +20,7 @@ class NewsCatalog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateCategory(
-      // TODO: localize this text
-      text: 'Муҳим янгиликлар',
+      text: 'Muhim yangiliklar'.tr,
       child: Obx(() {
         statusChecker(controller);
         List<PostModel> postModels = controller.postModels;

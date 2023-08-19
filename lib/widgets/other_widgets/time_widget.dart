@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:task_platina_mobile/controllers/language_controller.dart';
 import 'package:task_platina_mobile/models/category_model.dart';
 
 import '../../constants/drawer_constant.dart' as constant;
@@ -13,6 +15,8 @@ class TimeWidget extends StatelessWidget {
     this.category,
     this.date,
   });
+
+  LocalizationController get loc => Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +33,7 @@ class TimeWidget extends StatelessWidget {
           SizedBox(
             width: MediaQuery.sizeOf(context).width * 0.26,
             child: Text(
-              // TODO: localize this text and how last update
-              DateFormat('dd MMMM, HH:mm', 'ru').format(date!),
+              DateFormat('dd MMMM, HH:mm', loc.locale.languageCode).format(date!),
               style: const TextStyle(color: Color(0xFFA9AABC), fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500),
             ),
           ),

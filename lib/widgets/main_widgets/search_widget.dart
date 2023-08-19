@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:task_platina_mobile/controllers/language_controller.dart';
 
 import '../../constants/color_constants.dart';
 import '../../controllers/search_controller.dart';
@@ -34,8 +35,8 @@ class SearchWidget extends StatelessWidget {
               TextField(
                 cursorHeight: 20,
                 onChanged: (value) {
-                  // TODO: Localize this link
-                  controller.searchData('https://platina.uz/api/proxy/uz/api/search?q=$value');
+                  LocalizationController loc = Get.find();
+                  controller.searchData('https://platina.uz/api/proxy/${loc.locale.languageCode}/api/search?q=$value');
                 },
                 decoration: InputDecoration(
                   hintText: 'Сайт бўйлаб қидирув...',

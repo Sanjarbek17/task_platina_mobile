@@ -1,7 +1,10 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 import '../constants/color_constants.dart';
 import '../widgets/main_widgets/main_widgets.dart';
@@ -79,22 +82,23 @@ class _MyHomePageState extends State<MyHomePage> {
               type: BottomNavigationBarType.fixed,
               unselectedLabelStyle: const TextStyle(color: blue10, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500),
               selectedLabelStyle: const TextStyle(color: blue, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w600),
-              // TODO: localize these text
               items: [
-                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/home.svg', color: _selectedIndex == 0 ? blue : null), label: 'Асосий'),
-                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/lenta.svg', color: _selectedIndex == 1 ? blue : null), label: 'Лента'),
-                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/ommabop.svg', color: _selectedIndex == 2 ? blue : null), label: 'Оммабоп'),
-                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/maqola.svg', color: _selectedIndex == 3 ? blue : null), label: 'Мақола'),
-                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/video.svg', color: _selectedIndex == 4 ? blue : null), label: 'Видео'),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/home.svg', color: _selectedIndex == 0 ? blue : null), label: 'Asosiy'.tr),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/lenta.svg', color: _selectedIndex == 1 ? blue : null), label: 'Lenta'.tr),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/ommabop.svg', color: _selectedIndex == 2 ? blue : null), label: 'OmmaBop'.tr),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/maqola.svg', color: _selectedIndex == 3 ? blue : null), label: 'Maqola'.tr),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/video.svg', color: _selectedIndex == 4 ? blue : null), label: 'Video'.tr),
               ],
             ),
           ),
           if (isSearch)
             SearchWidget(
               tappedOutside: (p0) {
-                setState(() {
-                  isSearch = false;
-                });
+                if (p0.position.dy > 60) {
+                  setState(() {
+                    isSearch = false;
+                  });
+                }
               },
             ),
         ],
