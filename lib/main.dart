@@ -21,7 +21,7 @@ void main() async {
 }
 
 Future<void> initServices() async {
-  await Get.putAsync<RestClient>(() => RestClient().init());
+  Get.lazyPut<RestClient>(() => RestClient().init());
 }
 
 class MyApp extends StatelessWidget {

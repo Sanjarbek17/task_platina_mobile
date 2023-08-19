@@ -73,8 +73,8 @@ class PostModel {
       gallery: json['gallery'],
       shortUrl: json['short_url'],
       youtubeLink: json['youtube_link'],
-      tags: json['tags'] ,
-      expiredAt: json['expired_at'],
+      tags: json['tags'],
+      expiredAt: json['expired_at'] != null ? DateTime.parse(json['expired_at']) : null,
       language: json['language'],
     );
   }

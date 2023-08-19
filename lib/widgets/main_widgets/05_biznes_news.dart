@@ -3,7 +3,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_platina_mobile/core/utils/statush_checker.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 import 'package:task_platina_mobile/widgets/other_widgets/template_category.dart';
 
@@ -22,7 +21,15 @@ class BiznesNews extends StatelessWidget {
     return TemplateCategory(
       text: 'Biznes'.tr,
       child: Obx(() {
-        statusChecker(controller);
+        if (controller.postModels.isEmpty) {
+          controller.onInit();
+        }
+        if (controller.status.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (controller.status.isError) {
+          return const Center(child: Text('Error'));
+        }
         List<PostModel> postModels = controller.postModels;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),

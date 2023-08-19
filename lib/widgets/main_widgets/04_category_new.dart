@@ -3,26 +3,37 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:task_platina_mobile/controllers/controllers.dart';
-import 'package:task_platina_mobile/core/utils/statush_checker.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 
 import '../big_card/big_card2.dart';
 import '../other_widgets/small_card.dart';
 import '../other_widgets/template_category.dart';
 
-class CategoryNews extends StatelessWidget {
+class CategoryNews extends StatefulWidget {
   const CategoryNews({
     super.key,
   });
 
-  CategoryController get controller => Get.find<CategoryController>();
+  @override
+  State<CategoryNews> createState() => _CategoryNewsState();
+}
 
+class _CategoryNewsState extends State<CategoryNews> {
+  CategoryController controller = Get.find<CategoryController>();
   @override
   Widget build(BuildContext context) {
     return TemplateCategory(
       text: 'Davlat Xaridlari'.tr,
       child: Obx(() {
-        statusChecker(controller);
+        if (controller.postModels.isEmpty) {
+          controller.onInit();
+        }
+        if (controller.status.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (controller.status.isError) {
+          return const Center(child: Text('Error'));
+        }
         List<PostModel> postModels = controller.postModels;
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0),

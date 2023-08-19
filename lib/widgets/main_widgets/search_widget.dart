@@ -2,22 +2,26 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_platina_mobile/controllers/language_controller.dart';
 
 import '../../constants/color_constants.dart';
+import '../../controllers/language_controller.dart';
 import '../../controllers/search_controller.dart';
-import '../../core/utils/statush_checker.dart';
 import '../../models/post_model.dart';
 import '../other_widgets/search_card.dart';
 
-class SearchWidget extends StatelessWidget {
+class SearchWidget extends StatefulWidget {
   final Function(PointerDownEvent)? tappedOutside;
   const SearchWidget({
     super.key,
     this.tappedOutside,
   });
 
-  CustomSearchController get controller => Get.find();
+  @override
+  State<SearchWidget> createState() => _SearchWidgetState();
+}
+
+class _SearchWidgetState extends State<SearchWidget> {
+  CustomSearchController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class SearchWidget extends StatelessWidget {
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
         child: TapRegion(
-          onTapOutside: tappedOutside,
+          onTapOutside: widget.tappedOutside,
           child: Column(
             children: [
               TextField(
@@ -53,7 +57,12 @@ class SearchWidget extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 5),
                 decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(8)),
                 child: Obx(() {
-                  statusChecker(controller);
+                  if (controller.status.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  if (controller.status.isError) {
+                    return const Center(child: Text('Error'));
+                  }
                   List<PostModel> postModels = controller.postModels;
                   return ListView.builder(
                     shrinkWrap: true,

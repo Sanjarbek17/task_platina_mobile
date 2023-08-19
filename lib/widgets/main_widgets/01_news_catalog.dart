@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/popular_controller.dart';
-import '../../core/utils/statush_checker.dart';
 import '../../models/post_model.dart';
 import '../big_card/big_card.dart';
 import '../other_widgets/small_card.dart';
@@ -22,7 +21,15 @@ class NewsCatalog extends StatelessWidget {
     return TemplateCategory(
       text: 'Muhim yangiliklar'.tr,
       child: Obx(() {
-        statusChecker(controller);
+        if (controller.postModels.isEmpty) {
+          controller.onInit();
+        }
+        if (controller.status.isLoading) {
+          return const Center(child: CircularProgressIndicator());
+        }
+        if (controller.status.isError) {
+          return const Center(child: Text('Error'));
+        }
         List<PostModel> postModels = controller.postModels;
         return Column(
           children: [
