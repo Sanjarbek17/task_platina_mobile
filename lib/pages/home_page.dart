@@ -1,18 +1,10 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/search_widget.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/04_category_new.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/05_biznes_news.dart';
 
 import '../constants/color_constants.dart';
-import '../widgets/main_widgets/01_news_catalog.dart';
-import '../widgets/main_widgets/02_author_news.dart';
-import '../widgets/main_widgets/03_articles.dart';
-import '../widgets/main_widgets/06_footer.dart';
+import '../widgets/main_widgets/main_widgets.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -97,7 +89,14 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
           ),
-          if (isSearch) const SearchWidget(),
+          if (isSearch)
+            SearchWidget(
+              tappedOutside: (p0) {
+                setState(() {
+                  isSearch = false;
+                });
+              },
+            ),
         ],
       ),
     );

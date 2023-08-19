@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 import 'bindings.dart';
 import 'core/network/rest_client.dart';
@@ -7,6 +8,7 @@ import 'pages/home_page.dart';
 
 void main()async {
  await initServices();
+ await initializeDateFormatting();
   runApp(const MyApp());
 }
 

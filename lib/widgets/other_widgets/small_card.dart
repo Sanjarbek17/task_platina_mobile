@@ -18,24 +18,28 @@ class SmallCard extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            flex: 6,
+            flex: 65,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  postModel.title,
-                  style: const TextStyle(color: blue, fontSize: 16, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700),
+                Padding(
+                  padding: const EdgeInsets.only(right: 13.0),
+                  child: Text(
+                    postModel.title,
+                    style: const TextStyle(color: blue, fontSize: 16, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700),
+                  ),
                 ),
                 const SizedBox(height: 10),
                 TimeWidget(category: postModel.category, date: postModel.publish),
               ],
             ),
           ),
+          // const SizedBox(width: 16),
           Expanded(
-            flex: 4,
+            flex: 35,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(BASE_URL + postModel.imageMedium, fit: BoxFit.cover),
+              child: Image.network(BASE_URL + postModel.imageMedium, width: 129, height: 86, fit: BoxFit.cover),
             ),
           )
         ],

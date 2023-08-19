@@ -29,12 +29,15 @@ class NewsCatalog extends StatelessWidget {
           children: [
             BigCard(postModel: postModels.first),
             const Divider(height: 35),
-            ListView.separated(
-              itemBuilder: (context, index) => SmallCard(postModel: postModels[index + 1]),
-              separatorBuilder: (context, index) => const Padding(padding: EdgeInsets.symmetric(horizontal: 35.0), child: Divider(height: 35)),
-              itemCount: postModels.length >= 4 ? 3 : postModels.length - 1,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: ListView.separated(
+                itemBuilder: (context, index) => SmallCard(postModel: postModels[index + 1]),
+                separatorBuilder: (context, index) => const Padding(padding: EdgeInsets.symmetric(horizontal: 35.0), child: Divider(height: 35)),
+                itemCount: postModels.length >= 4 ? 3 : postModels.length - 1,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+              ),
             ),
           ],
         );
