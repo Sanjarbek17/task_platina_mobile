@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:task_platina_mobile/pages/home_page.dart';
 
 void main() {
@@ -10,8 +11,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return GetMaterialApp(
+      title: 'Platina',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
@@ -31,7 +32,14 @@ class MyApp extends StatelessWidget {
           },
         ),
       ),
-      home: const MyHomePage(),
+      initialRoute: MyHomePage.routeName,
+      getPages: [
+        GetPage(
+          name: MyHomePage.routeName,
+          page: () => const MyHomePage(),
+          // binding: HomeBinding(),
+        ),
+      ],
     );
   }
 }

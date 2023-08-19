@@ -1,4 +1,3 @@
-
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
@@ -58,10 +57,7 @@ class Footer extends StatelessWidget {
                 width: 45,
                 height: 45,
                 padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                decoration: ShapeDecoration(
-                  color: const Color(0xFFF8F8FF),
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                ),
+                decoration: ShapeDecoration(color: const Color(0xFFF8F8FF), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8))),
                 child: const Center(
                   child: Text('18+', style: TextStyle(color: Color(0xFF737C98), fontSize: 14, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w600)),
                 ),

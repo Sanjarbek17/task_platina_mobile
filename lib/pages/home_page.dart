@@ -15,6 +15,8 @@ import '../widgets/main_widgets/news_catalog.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
+  static const routeName = "/home";
+
   const MyHomePage({super.key});
 
   @override
@@ -67,11 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         bottomNavigationBar: BottomNavigationBar(
-          onTap: (value) {
-            setState(() {
-              _selectedIndex = value;
-            });
-          },
+          onTap: changeIndex,
           currentIndex: _selectedIndex,
           selectedItemColor: blue,
           unselectedItemColor: blue10,
@@ -90,6 +88,12 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
     );
+  }
+
+  void changeIndex(value) {
+    setState(() {
+      _selectedIndex = value;
+    });
   }
 
   void toggleDrawer() {
