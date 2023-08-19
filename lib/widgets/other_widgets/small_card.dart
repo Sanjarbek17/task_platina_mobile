@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:task_platina_mobile/constants/color_constants.dart';
+import 'package:task_platina_mobile/core/network/rest_client.dart';
+import 'package:task_platina_mobile/models/post_model.dart';
 import 'package:task_platina_mobile/widgets/other_widgets/time_widget.dart';
 
 class SmallCard extends StatelessWidget {
-  final String? category;
+  final PostModel postModel;
   const SmallCard({
     super.key,
-    this.category,
+    required this.postModel,
   });
 
   @override
@@ -19,23 +22,18 @@ class SmallCard extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'Иқтисодиётимиздаги “саратон”дан қачон қутуламиз?',
-                  style: TextStyle(
-                    color: Color(0xFF1D3068),
-                    fontSize: 16,
-                    fontFamily: 'SF Pro Display',
-                    fontWeight: FontWeight.w700,
-                  ),
+                Text(
+                  postModel.title,
+                  style: const TextStyle(color: blue, fontSize: 16, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(height: 10),
-                TimeWidget(category: category),
+                TimeWidget(category: postModel.category, date: postModel.publish),
               ],
             ),
           ),
           Expanded(
             flex: 4,
-            child: Image.asset('assets/images/second_image.png'),
+            child: Image.network(BASE_URL + postModel.image, fit: BoxFit.cover),
           )
         ],
       ),

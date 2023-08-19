@@ -23,5 +23,8 @@ const Color siyosat10 = Color(0x1A2DA85B);
 const Color sport = Color(0xFFE50029);
 const Color sport10 = Color(0x1AE50029);
 
+const Color davlat = Color(0xFF1D3068);
+const Color davlat10 = Color(0x1A1D3068);
+
 const Color tahlil = Color(0xFF00AEAD);
 const Color tahlil10 = Color(0x1A00AEAD);

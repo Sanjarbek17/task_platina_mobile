@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:task_platina_mobile/core/network/rest_client.dart';
+import 'package:task_platina_mobile/models/post_model.dart';
 import 'package:task_platina_mobile/widgets/other_widgets/time_widget.dart';
 
 import '../../constants/color_constants.dart';
 
 class BigCard2 extends StatelessWidget {
-  const BigCard2({super.key});
+  final PostModel postModel;
+  const BigCard2({
+    super.key,
+    required this.postModel,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -19,16 +25,15 @@ class BigCard2 extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.asset(
-                  'assets/images/first_image.png',
-                  // width: MediaQuery.of(context).size.width - 32,
-                  fit: BoxFit.fitHeight,
-                ),
+                child: Image.network(BASE_URL + postModel.image, fit: BoxFit.fitHeight),
               ),
               const SizedBox(height: 15),
-              const Text('Қўрқув, ҳаяжон, ўзига ишонч ёки ҳеч нарсани ҳис қилмаслик (фотоҳикоя)', style: TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
+              Text(postModel.title, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
-              const TimeWidget(),
+               TimeWidget(
+                category: postModel.category,
+                date: postModel.publish,
+              ),
             ],
           )
         ],

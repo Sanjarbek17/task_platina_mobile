@@ -18,10 +18,10 @@ class PostModel {
   final String imageSmall;
   final String? imageSource;
   final String? imageName;
-  final List<String> gallery;
+  final List<dynamic> gallery;
   final String? shortUrl;
   final String? youtubeLink;
-  final List<String> tags;
+  final List<dynamic> tags;
   final DateTime? expiredAt;
   final String language;
 
@@ -73,7 +73,7 @@ class PostModel {
       gallery: json['gallery'],
       shortUrl: json['short_url'],
       youtubeLink: json['youtube_link'],
-      tags: json['tags'],
+      tags: json['tags'] ,
       expiredAt: json['expired_at'],
       language: json['language'],
     );

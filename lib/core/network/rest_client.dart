@@ -7,7 +7,8 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 
 enum Method { POST, GET, PUT, DELETE, PATCH }
 
-const BASE_URL = "https://hris.sslwireless.com/api/v1/";
+// TODO: change this url language
+const BASE_URL = "https://cp.dev.platina.uz/";
 
 class RestClient extends GetxService {
   late Dio _dio;
@@ -15,6 +16,7 @@ class RestClient extends GetxService {
   //this is for header
   static header() => {
         'Content-Type': 'application/json',
+        'X-Platina-Api-Key': 'QdO5hA3D.iSevNc03mulrumyLiPqlcM03M9clZdDQ',
       };
 
   Future<RestClient> init() async {
@@ -25,21 +27,21 @@ class RestClient extends GetxService {
 
   void initInterceptors() {
     _dio.interceptors.add(InterceptorsWrapper(onRequest: (options, handler) {
-      print('REQUEST[${options.method}] => PATH: ${options.path} '
-          '=> Request Values: ${options.queryParameters}, => HEADERS: ${options.headers}');
+      // print('REQUEST[${options.method}] => PATH: ${options.path} '
+      //     '=> Request Values: ${options.queryParameters}, => HEADERS: ${options.headers}');
       return handler.next(options);
     }, onResponse: (response, handler) {
-      print('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
+      // print('RESPONSE[${response.statusCode}] => DATA: ${response.data}');
       return handler.next(response);
     }, onError: (err, handler) {
-      print('ERROR[${err.response?.statusCode}]');
+      // print('ERROR[${err.response?.statusCode}]');
       return handler.next(err);
     }));
   }
 
   Future<dynamic> request(String url, Method method, Map<String, dynamic>? params) async {
     Response response;
-
+    url = 'uz/api/$url';
     try {
       if (method == Method.POST) {
         response = await _dio.post(url, data: params);

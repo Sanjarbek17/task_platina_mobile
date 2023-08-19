@@ -1,13 +1,16 @@
 import 'package:flutter/cupertino.dart';
+import 'package:task_platina_mobile/models/category_model.dart';
 
-import '../../constants/color_constants.dart';
+import '../../constants/drawer_constant.dart' as constant;
 
 class TimeWidget extends StatelessWidget {
-  final String? category;
+  final CategoryModel? category;
+  final DateTime? date;
 
   const TimeWidget({
     super.key,
     this.category,
+    this.date,
   });
 
   @override
@@ -15,11 +18,10 @@ class TimeWidget extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // TODO: localize this text
-        if (category != null) const Text('Жамият', style: TextStyle(color: jamiyat, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
+        if (category != null) Text(category!.name, style: TextStyle(color: constant.category.firstWhere((element) => element['text'].toString().toLowerCase() == category!.slug)['color'], fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
         if (category != null) const SizedBox(width: 14),
-        // TODO: localize this text
-        const Text('20 дақиқа аввал', style: TextStyle(color: Color(0xFFA9AABC), fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
+        // TODO: localize this text and how last update
+        if (date != null) Text(date!.day.toString(), style: const TextStyle(color: Color(0xFFA9AABC), fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
       ],
     );
   }

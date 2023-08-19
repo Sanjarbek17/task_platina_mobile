@@ -32,6 +32,11 @@ List<Map<String, dynamic>> category = [
     'color2': sport10,
   },
   {
+    'text': 'Davlat-xaridlari',
+    'color': davlat,
+    'color2': davlat10,
+  },
+  {
     'text': 'Tahlil',
     'color': tahlil,
     'color2': tahlil10,

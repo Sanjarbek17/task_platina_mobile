@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:task_platina_mobile/pages/home_page.dart';
+
+import 'bindings.dart';
+import 'core/network/rest_client.dart';
+import 'pages/home_page.dart';
 
 void main() {
+  initServices();
   runApp(const MyApp());
+}
+
+initServices() async {
+  await Get.putAsync<RestClient>(() => RestClient().init());
+  // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 
 class MyApp extends StatelessWidget {
@@ -37,7 +46,7 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: MyHomePage.routeName,
           page: () => const MyHomePage(),
-          // binding: HomeBinding(),
+          binding: HomeBinding(),
         ),
       ],
     );
