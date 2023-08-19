@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:task_platina_mobile/core/network/rest_client.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 import 'package:task_platina_mobile/widgets/other_widgets/time_widget.dart';
@@ -20,7 +21,7 @@ class BigCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisSize: MainAxisSize.min,
             children: [
               ClipRRect(
@@ -33,8 +34,10 @@ class BigCard extends StatelessWidget {
               ),
               const SizedBox(height: 15),
               Text(postModel.title, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
-              const SizedBox(height: 10),
-              Text(postModel.description, maxLines: 2, style: const TextStyle(color: blue10, fontSize: 14, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w400, height: 1.43)),
+              Html(
+                data: postModel.shortDescription,
+                style: {'body': Style(margin: Margins.all(0), color: blue10, fontSize: FontSize(14), fontFamily: 'SF Pro Display', fontWeight: FontWeight.w400)},
+              ),
               // TextButton(
               //   onPressed: () {},
               //   style: ButtonStyle(

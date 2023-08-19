@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 const Color blue = Color(0xFF1D3068);
 const Color blue10 = Color(0xFF737C98);
+const Color link = Color(0xFF0066CC);
 
 const Color bg = Color(0xFFEAEAF8);
-
 
 const Color iqtisod = Color(0xFFA940FF);
 const Color iqtisod10 = Color(0x1AA940FF);

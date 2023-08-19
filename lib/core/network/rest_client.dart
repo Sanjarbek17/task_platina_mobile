@@ -75,4 +75,42 @@ class RestClient extends GetxService {
       throw Exception("Something Went Wrong");
     }
   }
+
+  Future<dynamic> searchRequest(String url, Method method, Map<String, dynamic>? params) async {
+    Response response;
+    Dio dio = Dio();
+
+    try {
+      if (method == Method.POST) {
+        response = await dio.post(url, data: params);
+      } else if (method == Method.DELETE) {
+        response = await dio.delete(url);
+      } else if (method == Method.PATCH) {
+        response = await dio.patch(url);
+      } else {
+        response = await dio.get(
+          url,
+          queryParameters: params,
+        );
+      }
+
+      if (response.statusCode == 200) {
+        return response;
+      } else if (response.statusCode == 401) {
+        throw Exception("Unauthorized");
+      } else if (response.statusCode == 500) {
+        throw Exception("Server Error");
+      } else {
+        throw Exception("Something Went Wrong");
+      }
+    } on SocketException catch (e) {
+      throw Exception("No Internet Connection: $e");
+    } on FormatException {
+      throw Exception("Bad Response Format!");
+    } on DioException catch (e) {
+      throw Exception(e);
+    } catch (e) {
+      throw Exception("Something Went Wrong");
+    }
+  }
 }

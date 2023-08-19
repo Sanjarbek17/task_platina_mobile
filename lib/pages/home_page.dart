@@ -4,14 +4,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/05_biznes_news.dart';
+import 'package:task_platina_mobile/widgets/main_widgets/search_widget.dart';
 import 'package:task_platina_mobile/widgets/main_widgets/04_category_new.dart';
+import 'package:task_platina_mobile/widgets/main_widgets/05_biznes_news.dart';
 
 import '../constants/color_constants.dart';
-import '../widgets/main_widgets/03_articles.dart';
-import '../widgets/main_widgets/02_author_news.dart';
-import '../widgets/main_widgets/06_footer.dart';
 import '../widgets/main_widgets/01_news_catalog.dart';
+import '../widgets/main_widgets/02_author_news.dart';
+import '../widgets/main_widgets/03_articles.dart';
+import '../widgets/main_widgets/06_footer.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -28,6 +29,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _selectedIndex = 0;
 
+  bool isSearch = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,55 +40,65 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 0.8,
         centerTitle: true,
         iconTheme: const IconThemeData(color: Color(0xFF1D3068)),
-        actions: [SvgPicture.asset('assets/images/search_icon.svg')],
+        actions: [
+          InkWell(
+            onTap: toggleSearch,
+            child: SvgPicture.asset('assets/images/search_icon.svg'),
+          ),
+        ],
       ),
-      body: Scaffold(
-        key: _key,
-        drawerScrimColor: Color.fromARGB((255 * 0.6).toInt(), 29, 48, 104),
-        drawer: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-          child: Drawer(
-            width: MediaQuery.of(context).size.width * 0.67,
-            child: const DrawerChild(),
+      body: Stack(
+        children: [
+          Scaffold(
+            key: _key,
+            drawerScrimColor: Color.fromARGB((255 * 0.6).toInt(), 29, 48, 104),
+            drawer: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
+              child: Drawer(
+                width: MediaQuery.of(context).size.width * 0.67,
+                child: const DrawerChild(),
+              ),
+            ),
+            backgroundColor: bg,
+            body: const SingleChildScrollView(
+              child: Column(
+                children: [
+                  SizedBox(height: 16),
+                  NewsCatalog(),
+                  SizedBox(height: 16),
+                  AuthorNews(),
+                  SizedBox(height: 16),
+                  Articles(),
+                  SizedBox(height: 16),
+                  CategoryNews(),
+                  SizedBox(height: 16),
+                  BiznesNews(),
+                  SizedBox(height: 16),
+                  Footer(),
+                ],
+              ),
+            ),
+            bottomNavigationBar: BottomNavigationBar(
+              onTap: changeIndex,
+              currentIndex: _selectedIndex,
+              selectedItemColor: blue,
+              unselectedItemColor: blue10,
+              showUnselectedLabels: true,
+              type: BottomNavigationBarType.fixed,
+              unselectedLabelStyle: const TextStyle(color: blue10, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500),
+              selectedLabelStyle: const TextStyle(color: blue, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w600),
+              // TODO: localize these text
+              items: [
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/home.svg', color: _selectedIndex == 0 ? blue : null), label: 'Асосий'),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/lenta.svg', color: _selectedIndex == 1 ? blue : null), label: 'Лента'),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/ommabop.svg', color: _selectedIndex == 2 ? blue : null), label: 'Оммабоп'),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/maqola.svg', color: _selectedIndex == 3 ? blue : null), label: 'Мақола'),
+                BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/video.svg', color: _selectedIndex == 4 ? blue : null), label: 'Видео'),
+              ],
+            ),
           ),
-        ),
-        backgroundColor: bg,
-        body: const SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 16),
-              NewsCatalog(),
-              SizedBox(height: 16),
-              AuthorNews(),
-              SizedBox(height: 16),
-              Articles(),
-              SizedBox(height: 16),
-              CategoryNews(),
-              SizedBox(height: 16),
-              BiznesNews(),
-              SizedBox(height: 16),
-              Footer(),
-            ],
-          ),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          onTap: changeIndex,
-          currentIndex: _selectedIndex,
-          selectedItemColor: blue,
-          unselectedItemColor: blue10,
-          showUnselectedLabels: true,
-          type: BottomNavigationBarType.fixed,
-          unselectedLabelStyle: const TextStyle(color: blue10, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500),
-          selectedLabelStyle: const TextStyle(color: blue, fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w600),
-          // TODO: localize these text
-          items: [
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/home.svg', color: _selectedIndex == 0 ? blue : null), label: 'Асосий'),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/lenta.svg', color: _selectedIndex == 1 ? blue : null), label: 'Лента'),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/ommabop.svg', color: _selectedIndex == 2 ? blue : null), label: 'Оммабоп'),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/maqola.svg', color: _selectedIndex == 3 ? blue : null), label: 'Мақола'),
-            BottomNavigationBarItem(icon: SvgPicture.asset('assets/images/video.svg', color: _selectedIndex == 4 ? blue : null), label: 'Видео'),
-          ],
-        ),
+          if (isSearch) const SearchWidget(),
+        ],
       ),
     );
   }
@@ -98,10 +111,24 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void toggleDrawer() {
     // open and close the drawer
+    if (isSearch) {
+      setState(() {
+        isSearch = false;
+      });
+    }
     if (!_key.currentState!.isDrawerOpen) {
       _key.currentState!.openDrawer();
     } else {
       Navigator.of(_key.currentContext!).pop();
     }
+  }
+
+  void toggleSearch() {
+    if (_key.currentState!.isDrawerOpen) {
+      Navigator.of(_key.currentContext!).pop();
+    }
+    setState(() {
+      isSearch = !isSearch;
+    });
   }
 }

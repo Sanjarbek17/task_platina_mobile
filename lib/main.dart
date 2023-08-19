@@ -5,14 +5,13 @@ import 'bindings.dart';
 import 'core/network/rest_client.dart';
 import 'pages/home_page.dart';
 
-void main() {
-  initServices();
+void main()async {
+ await initServices();
   runApp(const MyApp());
 }
 
-initServices() async {
+Future<void> initServices() async {
   await Get.putAsync<RestClient>(() => RestClient().init());
-  // await Get.putAsync<AppDb>(() => AppDb.init());
 }
 
 class MyApp extends StatelessWidget {

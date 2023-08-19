@@ -10,5 +10,6 @@ class HomeBinding extends Bindings {
     Get.lazyPut<ArticlesController>(() => ArticlesController());
     Get.lazyPut<CategoryController>(() => CategoryController());
     Get.lazyPut<BiznesController>(() => BiznesController());
+    Get.lazyPut<CustomSearchController>(() => CustomSearchController());
   }
 }
