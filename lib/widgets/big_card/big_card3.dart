@@ -15,7 +15,7 @@ class BigCard3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16.0),
+      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -27,7 +27,8 @@ class BigCard3 extends StatelessWidget {
                 borderRadius: BorderRadius.circular(16),
                 child: Image.network(
                   BASE_URL + postModel.image,
-                  width: MediaQuery.of(context).size.width - 32,
+                  height: 200,
+                  width: double.infinity,
                   fit: BoxFit.cover,
                 ),
               ),

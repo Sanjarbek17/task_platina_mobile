@@ -26,6 +26,7 @@ class Articles extends StatelessWidget {
         List<PostModel> postModels = controller.postModels;
         return ListView.separated(
           shrinkWrap: true,
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
           physics: const NeverScrollableScrollPhysics(),
           itemCount: postModels.length > 3 ? 3 : postModels.length,
           itemBuilder: (context, index) => BigCard3(

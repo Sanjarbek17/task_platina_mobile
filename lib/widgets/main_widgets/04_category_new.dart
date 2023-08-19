@@ -25,20 +25,23 @@ class CategoryNews extends StatelessWidget {
       child: Obx(() {
         statusChecker(controller);
         List<PostModel> postModels = controller.postModels;
-        return Column(
-          children: [
-            BigCard2(postModel: postModels[0]),
-            const Divider(height: 35),
-            ListView.separated(
-              itemBuilder: (context, index) => SmallCard(
-                postModel: postModels[index + 1],
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: Column(
+            children: [
+              BigCard2(postModel: postModels[0]),
+              const Divider(height: 35),
+              ListView.separated(
+                itemBuilder: (context, index) => SmallCard(
+                  postModel: postModels[index + 1],
+                ),
+                separatorBuilder: (context, index) => const Padding(padding: EdgeInsets.symmetric(horizontal: 35.0), child: Divider(height: 35)),
+                itemCount: postModels.length > 4 ? 4 : postModels.length - 1,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
               ),
-              separatorBuilder: (context, index) => const Padding(padding: EdgeInsets.symmetric(horizontal: 35.0), child: Divider(height: 35)),
-              itemCount: postModels.length > 4 ? 4 : postModels.length - 1,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-            ),
-          ],
+            ],
+          ),
         );
       }),
     );

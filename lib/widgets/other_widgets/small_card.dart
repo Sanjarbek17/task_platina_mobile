@@ -14,7 +14,7 @@ class SmallCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: Row(
         children: [
           Expanded(
@@ -33,7 +33,10 @@ class SmallCard extends StatelessWidget {
           ),
           Expanded(
             flex: 4,
-            child: Image.network(BASE_URL + postModel.image, fit: BoxFit.cover),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8),
+              child: Image.network(BASE_URL + postModel.imageMedium, fit: BoxFit.cover),
+            ),
           )
         ],
       ),

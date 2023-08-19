@@ -20,6 +20,7 @@ class BiznesNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateCategory(
+      // TODO: localize this text
       text: 'Бизнес',
       child: Obx(() {
         statusChecker(controller);
@@ -30,7 +31,7 @@ class BiznesNews extends StatelessWidget {
             items: postModels.map((e) => BigCard3(postModel: e)).toList(),
             options: CarouselOptions(
               height: 310,
-              viewportFraction: 0.8,
+              viewportFraction: 0.85,
               padEnds: false,
               enableInfiniteScroll: false,
             ),

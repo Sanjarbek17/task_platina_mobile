@@ -31,7 +31,7 @@ class AuthorNews extends StatelessWidget {
                 items: postModels.map((e) => BigCard2(postModel: e)).toList(),
                 options: CarouselOptions(
                   height: 310,
-                  viewportFraction: 0.8,
+                  viewportFraction: 0.85,
                   padEnds: false,
                   enableInfiniteScroll: false,
                 ),
