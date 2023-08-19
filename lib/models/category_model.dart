@@ -1,18 +1,3 @@
-// Category{
-// id*	[...]
-// name*	string
-// title: Номи
-// maxLength: 255
-// slug*	string
-// maxLength: 255
-// pattern: ^[-a-zA-Z0-9_]+$
-// color	string
-// title: Ранг
-// pattern: ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
-// maxLength: 18
-// }
-
-// create categorymodel
 class CategoryModel {
   final int id;
   final String name;

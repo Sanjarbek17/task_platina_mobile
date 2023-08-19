@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/color_constants.dart';
+import '../../constants/color_constants.dart';
 
 class LocalText extends StatelessWidget {
   final String text;

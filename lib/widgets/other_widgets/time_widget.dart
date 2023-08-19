@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../constants/color_constants.dart';
+import '../../constants/color_constants.dart';
 
 class TimeWidget extends StatelessWidget {
   final String? category;

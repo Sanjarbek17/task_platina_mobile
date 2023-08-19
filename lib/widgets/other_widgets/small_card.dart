@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:task_platina_mobile/widgets/time_widget.dart';
+import 'package:task_platina_mobile/widgets/other_widgets/time_widget.dart';
 
 class SmallCard extends StatelessWidget {
   final String? category;

@@ -4,14 +4,14 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/biznes_news.dart';
-import 'package:task_platina_mobile/widgets/main_widgets/category_new.dart';
+import 'package:task_platina_mobile/widgets/main_widgets/05_biznes_news.dart';
+import 'package:task_platina_mobile/widgets/main_widgets/04_category_new.dart';
 
 import '../constants/color_constants.dart';
-import '../widgets/main_widgets/articles.dart';
-import '../widgets/main_widgets/author_news.dart';
-import '../widgets/main_widgets/footer.dart';
-import '../widgets/main_widgets/news_catalog.dart';
+import '../widgets/main_widgets/03_articles.dart';
+import '../widgets/main_widgets/02_author_news.dart';
+import '../widgets/main_widgets/06_footer.dart';
+import '../widgets/main_widgets/01_news_catalog.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatefulWidget {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:task_platina_mobile/widgets/social_widget.dart';
+import 'package:task_platina_mobile/widgets/other_widgets/social_widget.dart';
 
-import '../widgets/category_builder.dart';
-import '../widgets/langugae_widget.dart';
+import '../widgets/other_widgets/category_builder.dart';
+import '../widgets/other_widgets/langugae_widget.dart';
 
 class DrawerChild extends StatefulWidget {
   const DrawerChild({

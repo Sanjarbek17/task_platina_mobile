@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-import '../constants/color_constants.dart';
+import '../../constants/color_constants.dart';
 
 class TemplateCategory extends StatelessWidget {
   final String text;

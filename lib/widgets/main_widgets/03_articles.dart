@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../big_card/big_card3.dart';
-import '../template_category.dart';
+import '../other_widgets/template_category.dart';
 
 class Articles extends StatelessWidget {
   const Articles({

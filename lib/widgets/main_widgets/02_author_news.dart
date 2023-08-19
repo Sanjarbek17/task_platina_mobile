@@ -1,18 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:task_platina_mobile/widgets/template_category.dart';
 
 import '../big_card/big_card2.dart';
+import '../other_widgets/template_category.dart';
 
-class BiznesNews extends StatelessWidget {
-  const BiznesNews({
+class AuthorNews extends StatelessWidget {
+  const AuthorNews({
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
     return TemplateCategory(
-      text: 'Бизнес',
+      text: 'Муҳаррир танлови',
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0),
         child: CarouselSlider(

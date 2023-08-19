@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../constants/drawer_constant.dart';
+import '../../constants/drawer_constant.dart';
 import 'category_text.dart';
 
 class CategoryBuilder extends StatefulWidget {
