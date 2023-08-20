@@ -24,11 +24,11 @@ class NewsCatalog extends StatelessWidget {
         if (controller.postModels.isEmpty) {
           controller.onInit();
         }
-        if (controller.status.isLoading) {
-          return const Center(child: CircularProgressIndicator());
-        }
         if (controller.status.isError) {
           return const Center(child: Text('Error'));
+        }
+        if (controller.status.isLoading) {
+          return const Center(child: CircularProgressIndicator());
         }
         List<PostModel> postModels = controller.postModels;
         return Column(

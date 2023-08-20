@@ -20,7 +20,7 @@ class RestClient extends GetxService {
         'X-Platina-Api-Key': 'QdO5hA3D.iSevNc03mulrumyLiPqlcM03M9clZdDQ',
       };
 
-  RestClient init()  {
+  RestClient init() {
     _dio = Dio(BaseOptions(baseUrl: BASE_URL, headers: header()));
     initInterceptors();
     return this;
@@ -43,9 +43,18 @@ class RestClient extends GetxService {
   Future<dynamic> request(String url2, Method method, Map<String, dynamic>? params) async {
     Response response;
     LocalizationController loc = get_x.Get.find();
-    String url = '${loc.locale.languageCode}/api/$url2';
-    print(_dio.options.baseUrl);
-    print(url);
+    String local = '';
+    switch (loc.locale.languageCode) {
+      case 'ru':
+        local = 'uz';
+        break;
+      case 'en':
+        local = 'uz-latn';
+        break;
+      default:
+        local = loc.locale.languageCode;
+    }
+    String url = '$local/api$url2';
     try {
       if (method == Method.POST) {
         response = await _dio.post(url, data: params);

@@ -14,6 +14,7 @@ class CoreController extends BaseController with StateMixin {
 
   Future<void> loadData(String url) async {
     change(null, status: RxStatus.loading());
+    update();
     try {
       final result = await restClient.request(url, Method.GET, null);
 
@@ -29,8 +30,9 @@ class CoreController extends BaseController with StateMixin {
       }
     } on Exception catch (e) {
       change('asdf', status: RxStatus.error(e.toString()));
+      update();
       Get.showSnackbar(GetSnackBar(
-        message: "$e",
+        message: "My $e",
         duration: const Duration(milliseconds: 3000),
       ));
     }
@@ -52,7 +54,7 @@ class CoreController extends BaseController with StateMixin {
         change(null, status: RxStatus.empty());
       }
     } on Exception catch (e) {
-      change('asdf', status: RxStatus.error(e.toString()));
+      change(null, status: RxStatus.error(e.toString()));
       Get.showSnackbar(GetSnackBar(
         message: "$e",
         duration: const Duration(milliseconds: 3000),

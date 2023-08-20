@@ -38,13 +38,16 @@ class CategoryText extends StatelessWidget {
               color: isSelected ? color : null,
             ),
             const SizedBox(width: 8),
-            Text(
-              text,
-              style: TextStyle(
-                color: blue,
-                fontSize: 17,
-                fontFamily: 'SF Pro Display',
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.40,
+              child: Text(
+                text,
+                style: TextStyle(
+                  color: blue,
+                  fontSize: 17,
+                  fontFamily: 'SF Pro Display',
+                  fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
+                ),
               ),
             ),
           ],

@@ -6,7 +6,6 @@ import '../core/network/rest_client.dart';
 import '../models/post_model.dart';
 
 class BiznesController extends CoreController {
-
   @override
   void onInit() {
     loadData('/posts/business/');

@@ -30,8 +30,7 @@ class _CategoryNewsState extends State<CategoryNews> {
         }
         if (controller.status.isLoading) {
           return const Center(child: CircularProgressIndicator());
-        }
-        if (controller.status.isError) {
+        } else if (controller.status.isError) {
           return const Center(child: Text('Error'));
         }
         List<PostModel> postModels = controller.postModels;

@@ -19,7 +19,7 @@ class AuthorNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TemplateCategory(
-      text: 'Муҳаррир танлови',
+      text: 'Muharrir tanlovi'.tr,
       child: Obx(
         () {
           if (controller.postModels.isEmpty) {

@@ -28,7 +28,7 @@ class BigCard2 extends StatelessWidget {
                 child: Image.network(BASE_URL + postModel.image, fit: BoxFit.cover, width: double.infinity, height: 190),
               ),
               const SizedBox(height: 15),
-              Text(postModel.title, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
+              Text(postModel.title, maxLines: 2, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
               const SizedBox(height: 10),
               TimeWidget(
                 category: postModel.category,
