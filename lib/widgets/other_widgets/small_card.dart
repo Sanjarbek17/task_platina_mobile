@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:task_platina_mobile/constants/color_constants.dart';
 import 'package:task_platina_mobile/core/network/rest_client.dart';
@@ -39,7 +40,7 @@ class SmallCard extends StatelessWidget {
             flex: 35,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.network(BASE_URL + postModel.imageMedium, width: 129, height: 86, fit: BoxFit.cover),
+              child: CachedNetworkImage(imageUrl: BASE_URL + postModel.imageMedium, width: 129, height: 86, fit: BoxFit.cover),
             ),
           )
         ],

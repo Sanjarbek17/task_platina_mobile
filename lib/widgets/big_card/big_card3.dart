@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 
@@ -25,15 +26,10 @@ class BigCard3 extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  BASE_URL + postModel.image,
-                  height: 200,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
+                child: CachedNetworkImage(imageUrl: BASE_URL + postModel.image, height: 200, width: double.infinity, fit: BoxFit.cover),
               ),
               const SizedBox(height: 15),
-              Text(postModel.title, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
+              Text(postModel.title, maxLines: 3, overflow: TextOverflow.ellipsis, style: const TextStyle(color: blue, fontSize: 18, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w700)),
             ],
           )
         ],

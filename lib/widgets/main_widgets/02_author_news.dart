@@ -33,16 +33,12 @@ class AuthorNews extends StatelessWidget {
           }
           List<PostModel> postModels = controller.postModels;
           return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: CarouselSlider(
-                items: postModels.map((e) => BigCard2(postModel: e)).toList(),
-                options: CarouselOptions(
-                  height: 310,
-                  viewportFraction: 0.85,
-                  padEnds: false,
-                  enableInfiniteScroll: false,
-                ),
-              ));
+            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+            child: CarouselSlider(
+              items: postModels.map((e) => BigCard2(postModel: e)).toList(),
+              options: CarouselOptions(height: 310, viewportFraction: 0.85, padEnds: false, enableInfiniteScroll: false),
+            ),
+          );
         },
       ),
     );

@@ -35,12 +35,7 @@ class BiznesNews extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 8.0),
           child: CarouselSlider(
             items: postModels.map((e) => BigCard3(postModel: e)).toList(),
-            options: CarouselOptions(
-              height: 310,
-              viewportFraction: 0.85,
-              padEnds: false,
-              enableInfiniteScroll: false,
-            ),
+            options: CarouselOptions(height: 310, viewportFraction: 0.85, padEnds: false, enableInfiniteScroll: false),
           ),
         );
       }),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:task_platina_mobile/core/network/rest_client.dart';
@@ -26,8 +27,8 @@ class BigCard extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(16),
-                child: Image.network(
-                  BASE_URL + postModel.image,
+                child: CachedNetworkImage(
+                  imageUrl: BASE_URL + postModel.image,
                   width: MediaQuery.of(context).size.width - 32,
                   fit: BoxFit.cover,
                 ),
