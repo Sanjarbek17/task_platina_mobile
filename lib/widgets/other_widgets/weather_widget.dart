@@ -19,7 +19,7 @@ class WeatherWidget extends StatelessWidget {
       width: double.infinity,
       height: 150,
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       margin: const EdgeInsets.only(bottom: 16),
       child: Consumer<WeatherProvider>(builder: (context, watch, child) {
         if (watch.models.isEmpty) {
@@ -34,8 +34,9 @@ class WeatherWidget extends StatelessWidget {
             WeatherModel model = models[index];
             return SizedBox(
               width: 90,
-              height: 80,
+              height: 140,
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(DateFormat('dd MMMM', loc.locale.languageCode).format(model.date), style: const TextStyle(color: Color(0xFFA9AABC), fontSize: 12, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
