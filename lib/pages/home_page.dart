@@ -1,13 +1,14 @@
-// ignore_for_file: deprecated_member_use
-
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import '../widgets/other_widgets/daily_info.dart';
 
 import '../constants/color_constants.dart';
 import '../widgets/main_widgets/main_widgets.dart';
+import '../widgets/other_widgets/curse_child.dart';
+import '../widgets/other_widgets/weather_widget.dart';
 import 'open_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -25,6 +26,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
 
   bool isSearch = false;
+  bool isCurse = false;
+  bool isWeather = false;
 
   @override
   Widget build(BuildContext context) {
@@ -55,21 +58,26 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             backgroundColor: bg,
-            body: const SingleChildScrollView(
+            body: SingleChildScrollView(
               child: Column(
                 children: [
-                  SizedBox(height: 16),
-                  NewsCatalog(),
-                  SizedBox(height: 16),
-                  AuthorNews(),
-                  SizedBox(height: 16),
-                  Articles(),
-                  SizedBox(height: 16),
-                  CategoryNews(),
-                  SizedBox(height: 16),
-                  BiznesNews(),
-                  SizedBox(height: 16),
-                  Footer(),
+                  DailyInfo(
+                    curseToggle: curseToggle,
+                    weatherToggle: weatherToggle,
+                  ),
+                  if (isWeather) const WeatherWidget(),
+                  if (isCurse) const CurseChild(),
+                  const NewsCatalog(),
+                  const SizedBox(height: 16),
+                  const AuthorNews(),
+                  const SizedBox(height: 16),
+                  const Articles(),
+                  const SizedBox(height: 16),
+                  const CategoryNews(),
+                  const SizedBox(height: 16),
+                  const BiznesNews(),
+                  const SizedBox(height: 16),
+                  const Footer(),
                 ],
               ),
             ),
@@ -132,6 +140,20 @@ class _MyHomePageState extends State<MyHomePage> {
     }
     setState(() {
       isSearch = !isSearch;
+    });
+  }
+
+  void curseToggle() {
+    setState(() {
+      isCurse = !isCurse;
+      isWeather = false;
+    });
+  }
+
+  void weatherToggle() {
+    setState(() {
+      isWeather = !isWeather;
+      isCurse = false;
     });
   }
 }
