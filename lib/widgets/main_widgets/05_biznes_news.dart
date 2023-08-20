@@ -3,11 +3,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 import 'package:task_platina_mobile/widgets/other_widgets/template_category.dart';
 
 import '../../controllers/biznes_controller.dart';
 import '../big_card/big_card3.dart';
+import '../placeholders/slider_placeholder.dart';
 
 class BiznesNews extends StatelessWidget {
   const BiznesNews({
@@ -25,7 +27,12 @@ class BiznesNews extends StatelessWidget {
           controller.onInit();
         }
         if (controller.status.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            enabled: true,
+            child: const SliderPlaceholder(),
+          );
         }
         if (controller.status.isError) {
           return const Center(child: Text('Error'));

@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:task_platina_mobile/controllers/controllers.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 
 import '../big_card/big_card2.dart';
 import '../other_widgets/small_card.dart';
 import '../other_widgets/template_category.dart';
+import '../placeholders/big_placeholder.dart';
+import '../placeholders/small_placeholder.dart';
 
 class CategoryNews extends StatefulWidget {
   const CategoryNews({
@@ -29,7 +32,23 @@ class _CategoryNewsState extends State<CategoryNews> {
           controller.onInit();
         }
         if (controller.status.isLoading) {
-          return const Center(child: CircularProgressIndicator());
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            enabled: true,
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 16.0),
+              child: Column(
+                children: [
+                  BigPlaceholder(),
+                  Divider(),
+                  SmallPlaceholder(),
+                  Divider(),
+                  SmallPlaceholder(),
+                ],
+              ),
+            ),
+          );
         } else if (controller.status.isError) {
           return const Center(child: Text('Error'));
         }

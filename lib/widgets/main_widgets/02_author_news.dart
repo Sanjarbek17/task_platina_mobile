@@ -3,11 +3,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 import 'package:task_platina_mobile/controllers/author_controller.dart';
 import 'package:task_platina_mobile/models/post_model.dart';
 
 import '../big_card/big_card2.dart';
 import '../other_widgets/template_category.dart';
+import '../placeholders/slider_placeholder.dart';
 
 class AuthorNews extends StatelessWidget {
   const AuthorNews({
@@ -26,7 +28,12 @@ class AuthorNews extends StatelessWidget {
             controller.onInit();
           }
           if (controller.status.isLoading) {
-            return const Center(child: CircularProgressIndicator());
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade300,
+            highlightColor: Colors.grey.shade100,
+            enabled: true,
+            child: const SliderPlaceholder(),
+          );
           }
           if (controller.status.isError) {
             return const Center(child: Text('Error'));
@@ -44,3 +51,4 @@ class AuthorNews extends StatelessWidget {
     );
   }
 }
+
