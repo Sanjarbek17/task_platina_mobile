@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+import 'package:task_platina_mobile/models/currency_model.dart';
 
+import '../../providers/currency_provider.dart';
 import 'cure_widget.dart';
+import 'main_weather_widget.dart';
 
-class DailyInfo extends StatelessWidget {
+class DailyInfo extends StatefulWidget {
   final VoidCallback? curseToggle;
   final VoidCallback? weatherToggle;
 
@@ -14,32 +17,39 @@ class DailyInfo extends StatelessWidget {
   });
 
   @override
+  State<DailyInfo> createState() => _DailyInfoState();
+}
+
+class _DailyInfoState extends State<DailyInfo> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<CurrencyProvider>().getCurrencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: double.infinity,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: curseToggle,
-            child: const CurseWidget(),
-          ),
-          InkWell(
-            onTap: weatherToggle,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SvgPicture.asset('assets/images/weather.svg'),
-                  const SizedBox(width: 8),
-                  const Text('+19 °C', style: TextStyle(color: Color(0xFF1D3068), fontSize: 17, fontFamily: 'SF Pro Display', fontWeight: FontWeight.w500)),
-                ],
-              ),
+    return Consumer<CurrencyProvider>(builder: (context, watch, child) {
+      if (watch.currencyModels.isEmpty) {
+        return const SizedBox();
+      }
+      CurrencyModel curry = watch.currencyModels.first;
+      return SizedBox(
+        width: double.infinity,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            InkWell(
+              onTap: widget.curseToggle,
+              child: CurseWidget(code: curry),
             ),
-          ),
-        ],
-      ),
-    );
+            InkWell(
+              onTap: widget.weatherToggle,
+              child: const MainWeatherWidget(),
+            ),
+          ],
+        ),
+      );
+    });
   }
 }
