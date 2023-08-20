@@ -11,8 +11,6 @@ class WeatherProvider with ChangeNotifier {
 
   Future<void> getModels() async {
     Response r = await dio.get('https://platina.uz/api/weather/forecast.json?q=Uzbekistan&days=7');
-    print(r.statusCode);
-    print((r.data['forecast']['forecastday'] as List).length);
     List data = r.data['forecast']['forecastday'] as List;
     models = data.map((e) => WeatherModel.fromJson(e)).toList();
     notifyListeners();

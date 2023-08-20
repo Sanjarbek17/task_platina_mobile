@@ -27,7 +27,7 @@ class _MainWeatherWidgetState extends State<MainWeatherWidget> {
       }
       WeatherModel weat = watch.models.first;
       return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 5),
         child: Row(
           mainAxisSize: MainAxisSize.min,
           children: [

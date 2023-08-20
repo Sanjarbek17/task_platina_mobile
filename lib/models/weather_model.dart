@@ -12,7 +12,6 @@ class WeatherModel {
   });
 
   factory WeatherModel.fromJson(Map<String, dynamic> json) {
-    print(json['day']['condition']['icon']);
     return WeatherModel(
       imgUrl:'https:${json['day']['condition']['icon']}' ,
       date: DateTime.parse(json['date']),
